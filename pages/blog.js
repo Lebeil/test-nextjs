@@ -13,7 +13,7 @@ const PostLink = ({title}) => (
 
 const Blog = () => {
     const router = useRouter()
-    console.log(router.query)
+    /*console.log(router.query)*/
     return (
         <Layout>
             <h1>Blog</h1>

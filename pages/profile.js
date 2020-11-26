@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from "../components/layout";
 
-const Home = () => {
+const Profile = () => {
     return (
         <Layout>
-            <h1>Bonjour</h1>
+            <h1>Profile</h1>
         </Layout>
-    )
-}
+    );
+};
 
-export default Home;
+export default Profile;

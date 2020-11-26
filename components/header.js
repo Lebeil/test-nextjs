@@ -38,7 +38,6 @@ export const Header = () => {
                     <span style={router.pathname === '/profile' ? styles.active : styles.link}>Profile</span>
                 </a>
             </Link>
-
             <Link href="/blog/items" passHref>
                 <span style={router.pathname === '/blog/items' ? styles.active : styles.link}>Items</span>
             </Link>

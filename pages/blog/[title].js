@@ -3,7 +3,7 @@ import {useRouter} from "next/router";
 
 const Title = () => {
     const router = useRouter()
-    console.log(router.query)
+    /*console.log(router.query)*/
 
     return (
         <div>

@@ -1,11 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Layout from "../components/layout";
 import axios from 'axios'
+import useSWR from "swr"
 
 
 const Profile = () => {
-    const [data, setData] = useState("");
-    const url = "https://jsonplaceholder.typicode.com/users";
+
+    const fetcher = url => axios.get(url).then(res=> res.data);
+    const {data, error} = useSWR("https://jsonplaceholder.typicode.com/users", fetcher)
+    if(!data) return <h1>Chargement ...</h1>
+    if(error) return <h1>Une erreur est survenue !</h1>
 
     const styles = {
         padding: 10,
@@ -13,15 +17,6 @@ const Profile = () => {
         borderBottom: "1px solid grey"
     }
 
-    useEffect(()=> {
-        axios.get(url)
-            .then(response => {
-                setData(response.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
 
     return (
         <Layout>

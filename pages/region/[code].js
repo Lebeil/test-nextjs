@@ -5,7 +5,7 @@ const CodeRegion = ({data}) => {
 
     return (
         <div>
-            <h1>Région: {data.nom}</h1>
+            <h1>Région:  {data.nom}</h1>
             <p>code: {data.code}</p>
         </div>
     );

@@ -1,34 +1,46 @@
 import React from 'react';
 import Layout from "../components/layout";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import axios from "axios";
 
-const PostLink = ({title}) => (
-    <li>
-        <Link href={`/blog?title=${title}`}>
-            <a>{title}</a>
-        </Link>
-    </li>
-)
+const Blog = ({posts}) => {
+    const styles = {
+        main: {
+            margin: 20,
+            padding: 20,
+            borderBottom: "1px solid black"
+        },
+        img: {
+            height: 200,
+            width: 300
+        }
+    }
 
-const Blog = () => {
-    const router = useRouter()
-    /*console.log(router.query)*/
     return (
         <Layout>
-            <h1>Blog</h1>
-            <ul>
-                <PostLink title="react"/>
-                <PostLink title="vue"/>
-                <PostLink title="angular"/>
-                <PostLink title="svelte"/>
-                <PostLink title="next"/>
-            </ul>
-
-            <h3>{router.query.title}</h3>
+            {posts.map(post => (
+                <div key={post._id} style={styles.main}>
+                    <h1>{post.title}</h1>
+                    <div>
+                        <img src={post.pictures[0]} alt="imag" style={styles.img}/>
+                    </div>
+                    <div>{post.body}</div>
+                </div>
+            ))}
         </Layout>
     );
 };
+
+export const getStaticProps = async(context) => {
+    const url = "https://aqueous-meadow-07678.herokuapp.com";
+    const {data} = await axios.get(`${url}/api/posts`);
+    const posts = data.data
+    return {
+        props: {
+            posts
+        }
+    }
+}
 
 export default Blog
 ;

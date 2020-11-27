@@ -1,33 +1,43 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Layout from "../components/layout";
-import Link from "next/link";
-import {useRouter} from "next/router";
 import axios from 'axios'
-
-const LinkName = ({name})=> (
-    <li>
-        <Link href={`/profile?name=${name}`}>
-            <a>{name}</a>
-        </Link>
-    </li>
-)
 
 
 const Profile = () => {
-    const router = useRouter()
-    console.log(router.query)
+    const [data, setData] = useState("");
+    const url = "https://jsonplaceholder.typicode.com/users";
+
+    const styles = {
+        padding: 10,
+        margin: 10,
+        borderBottom: "1px solid grey"
+    }
+
+    useEffect(()=> {
+        axios.get(url)
+            .then(response => {
+                setData(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }, [])
 
     return (
         <Layout>
-            <h1>Profile</h1>
-            <ul>
-                <LinkName name="Paul"/>
-                <LinkName name="Joe"/>
-                <LinkName name="Thomas"/>
-                <LinkName name="Kevin"/>
-            </ul>
-
-            <h3>{router.query.name}</h3>
+            {
+                data && data.map(user=> (
+                    <div key={user.id} style={styles}>
+                        <h1>{user.name}</h1>
+                        <div>
+                            Email: {user.email}
+                        </div>
+                        <div>
+                            Telephone: {user.phone}
+                        </div>
+                    </div>
+                ))
+            }
         </Layout>
     );
 };

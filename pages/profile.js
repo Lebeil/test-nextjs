@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from "../components/layout";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import axios from 'axios'
 
 const LinkName = ({name})=> (
     <li>

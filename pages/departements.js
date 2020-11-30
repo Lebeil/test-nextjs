@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from "../components/layout";
 import axios from 'axios';
 import {useRouter} from "next/router";
+import Head from "next/head";
 
 const Departement = ({data}) => {
     const router = useRouter()
@@ -14,17 +15,20 @@ const Departement = ({data}) => {
     }
 
     return (
-        <div>
+        <>
+            <Head>
+                <title>Liste des départements</title>
+            </Head>
             <Layout>
                 {data.map(departement=> (
-                    <div style={styles}>
+                    <div style={styles} key={departement.code}>
                         <h1>{departement.nom}</h1>
                         <div>code de département : {departement.code}</div>
                         <div>Code de la région: {departement.codeRegion}</div>
                     </div>
                 ))}
             </Layout>
-        </div>
+        </>
     );
 };
 

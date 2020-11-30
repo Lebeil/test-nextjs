@@ -1,21 +1,27 @@
 import React from 'react';
 import Layout from "../../components/layout";
 import axios from "axios";
-import {useRouter} from "next/router";
+import Head from "next/head";
 
 const Id = ({data}) => {
     console.log(data)
 
     return (
-        <Layout>
-            <h1>{data.title}</h1>
-            <div>
-                <img src={data.pictures[0]} alt="dfs"/>
-            </div>
-            <div>
-                {data.description}
-            </div>
-        </Layout>
+        <>
+            <Head>
+                <title>{data.title}</title>
+            </Head>
+            <Layout>
+                <h1>{data.title}</h1>
+                <div>
+                    <img src={data.pictures[0]} alt="dfs"/>
+                </div>
+                <div>
+                    {data.description}
+                </div>
+            </Layout>
+        </>
+
     );
 };
 

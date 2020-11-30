@@ -11,6 +11,8 @@ const Home = ({data}) => {
         borderBottom: '1px solid black'
     }
 
+    console.log(process.env.API_ROOT)
+    console.log(process.env.NEXT_PUBLIC_API_ROOT)
     return (
         <>
             <Head>
@@ -36,8 +38,9 @@ const Home = ({data}) => {
 }
 
 export const getServerSideProps = async (context)=> {
-    const url = "https://geo.api.gouv.fr"
+    const url = process.env.API_GEO
     const {data} = await axios.get(`${url}/regions`)
+    console.log(process.env.API_ROOT)
     return {
         props: {
             data

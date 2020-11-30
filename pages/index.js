@@ -12,15 +12,18 @@ const Home = ({data}) => {
 
     return (
         <Layout>
-            {data.map(region=> (
-                <div key={region.code} style={styles}>
-                    <Link href={`/region/${region.code}`}>
-                        <h1>{region.nom}</h1>
-                    </Link>
+            <div className="container">
+                {data.map(region=> (
+                    <div key={region.code} style={styles}>
+                        <Link href={`/region/${region.code}`}>
+                            <h1>{region.nom}</h1>
+                        </Link>
 
-                    <p>{region.code}</p>
-                </div>
-            ))}
+                        <p>{region.code}</p>
+                    </div>
+                ))}
+            </div>
+
         </Layout>
     )
 }

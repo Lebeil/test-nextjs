@@ -8,18 +8,22 @@ const Id = ({data}) => {
 
     return (
         <>
-            <Head>
-                <title>{data.title}</title>
-            </Head>
-            <Layout>
-                <h1>{data.title}</h1>
-                <div>
-                    <img src={data.pictures[0]} alt="dfs"/>
-                </div>
-                <div>
-                    {data.description}
-                </div>
-            </Layout>
+            {data && (
+                <>
+                    <Head>
+                        <title>{data.title}</title>
+                    </Head>
+                    <Layout>
+                        <h1>{data.title}</h1>
+                        <div>
+                            <img src={data.pictures[0]} alt="dfs"/>
+                        </div>
+                        <div>
+                            {data.description}
+                        </div>
+                    </Layout>
+                </>
+            )}
         </>
 
     );

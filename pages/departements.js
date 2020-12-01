@@ -36,11 +36,13 @@ const Departement = ({data}) => {
     );
 };
 
-Departement.getInitialProps = async(context)=> {
+export const getStaticProps = async()=> {
     const url = "https://geo.api.gouv.fr/departements/";
     const {data} = await axios.get(url)
     return {
-        data
+        props: {
+            data
+        }
     }
 }
 

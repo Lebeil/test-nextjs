@@ -7,14 +7,17 @@ const CodeRegion = ({data}) => {
 
     return (
         <>
-            <Head>
-                <title>{data.nom}</title>
-            </Head>
-            <Layout>
-                <h1>Région:  {data.nom}</h1>
-                <p>code: {data.code}</p>
-            </Layout>
-
+            {data && (
+                <>
+                    <Head>
+                        <title>{data.nom}</title>
+                    </Head>
+                    <Layout>
+                        <h1>Région:  {data.nom}</h1>
+                        <p>code: {data.code}</p>
+                    </Layout>
+                </>
+            )}
         </>
     );
 };

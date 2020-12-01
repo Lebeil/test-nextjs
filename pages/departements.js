@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Layout from "../components/layout";
 import axios from 'axios';
 import {useRouter} from "next/router";
@@ -19,7 +19,7 @@ const Departement = ({data}) => {
     }
 
     return (
-        <>
+        <Fragment>
             <Head>
                 <title>Liste des départements</title>
             </Head>
@@ -32,7 +32,7 @@ const Departement = ({data}) => {
                     </div>
                 ))}
             </Layout>
-        </>
+        </Fragment>
     );
 };
 

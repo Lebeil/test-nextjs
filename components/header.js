@@ -25,11 +25,15 @@ export const Header = () => {
 
     return (
         <div style={styles.header}>
-            <Link href="/" passHref>
-                <span style={router.pathname === '/' ? styles.active : styles.link}>Home</span>
+            <Link href="/">
+                <a>
+                    <span style={router.pathname === '/' ? styles.active : styles.link}>Home</span>
+                </a>
             </Link>
-            <Link href="/blog" passHref>
-                <span style={router.pathname === '/blog' ? styles.active : styles.link}>Blog</span>
+            <Link href="/blog">
+                <a>
+                    <span style={router.pathname === '/blog' ? styles.active : styles.link}>Blog</span>
+                </a>
             </Link>
 
             {/*passHref remplace <a></a>*/}
@@ -38,14 +42,22 @@ export const Header = () => {
                     <span style={router.pathname === '/profile' ? styles.active : styles.link}>Profile</span>
                 </a>
             </Link>
-            <Link href="/blog/items" passHref>
-                <span style={router.pathname === '/blog/items' ? styles.active : styles.link}>Items</span>
+            <Link href="/blog/items">
+                <a>
+                    <span style={router.pathname === '/blog/items' ? styles.active : styles.link}>Items</span>
+                </a>
+
             </Link>
-            <Link href="/blog/categories" passHref>
-                <span style={router.pathname === '/blog/categories' ? styles.active : styles.link}>Catégories</span>
+            <Link href="/blog/categories">
+                <a>
+                    <span style={router.pathname === '/blog/categories' ? styles.active : styles.link}>Catégories</span>
+                </a>
+
             </Link>
-            <Link href="/departements" passHref>
-                <span style={router.pathname === '/departements' ? styles.active : styles.link}>Départements</span>
+            <Link href="/departements">
+                <a>
+                    <span style={router.pathname === '/departements' ? styles.active : styles.link}>Départements</span>
+                </a>
             </Link>
         </div>
     );
